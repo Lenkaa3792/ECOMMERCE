@@ -1,5 +1,8 @@
 // Importing the material package which contains the necessary widgets and APIs for building material design apps
 import 'package:flutter/material.dart';
+//import 'package:http/http.dart' as http;
+//import 'package:sqlite3/common.dart';
+//import 'package:sqlite3/wasm.dart';
 
 // The main function, entry point of the application
 void main() {
@@ -10,7 +13,7 @@ void main() {
 // MyApp class, a StatelessWidget that represents the root of the application
 class MyApp extends StatelessWidget {
   // Constructor for MyApp
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp();
 
   // The build method required to override for StatelessWidget, it returns the root widget of the application
   @override
@@ -21,7 +24,7 @@ class MyApp extends StatelessWidget {
       title: 'Shopeasy',
       // Theme data for the application, specifying the primary swatch color
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.yellow,
       ),
       // Setting debugShowCheckedModeBanner to false removes the debug banner in the app
       debugShowCheckedModeBanner: false,
@@ -63,7 +66,7 @@ class MyHomePage extends StatelessWidget {
       // GridView.builder widget, builds a grid view with a custom builder
       body: GridView.builder(
         // SliverGridDelegate that defines the grid layout
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2, // Number of columns in the grid
           crossAxisSpacing: 10.0, // Spacing between columns
           mainAxisSpacing: 10.0, // Spacing between rows
@@ -95,7 +98,7 @@ class MyHomePage extends StatelessWidget {
                 // Text widget displaying the category name
                 child: Text(
                   categories[index],
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -119,11 +122,16 @@ class CategoriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Dummy list of products for the selected category
     List<String> products = [
-      'Product 1',
-      'Product 2',
-      'Product 3',
-      'Product 4',
-      'Product 5',
+      'screens',
+      'laptops',
+      'phones',
+      'softwares',
+      'real estates',
+      'cars',
+      'lawyers',
+      'chefs',
+      'music',
+      'learning',
     ];
 
     // Scaffold widget, provides a framework for implementing the basic material design visual layout structure of the categories screen
@@ -138,7 +146,7 @@ class CategoriesScreen extends StatelessWidget {
       body: GridView.builder(
         // SliverGridDelegate that defines the grid layout
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, // Number of columns in the grid
+          crossAxisCount: 3, // Number of columns in the grid
           crossAxisSpacing: 10.0, // Spacing between columns
           mainAxisSpacing: 10.0, // Spacing between rows
           childAspectRatio: 1.5, // Aspect ratio of each tile (width / height)
@@ -147,29 +155,60 @@ class CategoriesScreen extends StatelessWidget {
         itemCount: products.length,
         // Builder function that returns the widget for each item in the grid view
         itemBuilder: (BuildContext context, int index) {
+
+
+          //define a list of image file paths corresponding to products
+          List<String> imagePaths = [
+            'assets/images/screens.jpg',
+            'assets/images/laptops.jpg',
+            'assets/images/phones.jpg',
+            'assets/images/softwares.jpg',
+            'assets/images/real estates.jpg',
+            'assets/images/cars.jpg',
+            'assets/images/lawyers.jpg',
+            'assets/images/chefs.jpg',
+            'assets/images/music.jpg',
+            'assets/images/learning.jpg',
+          ];
+
           // GestureDetector widget, detects gestures on its child and calls onTap callback when tapped
           return GestureDetector(
             // onTap callback function called when the product tile is tapped
             onTap: () {
-              // Handle product tap by printing the tapped product
+              // Handle product tap by printing the tapped product and its corresponding image path
               print('Product tapped: ${products[index]}');
+              print('Image path: ${imagePaths[index]}');
             },
-            // Card widget, represents a material design card containing the product name
+            // Card widget, represents a material design card containing the product name and image
             child: Card(
               elevation: 3.0,
-              // Padding around the product name text within the card
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                // Text widget displaying the product name
-                child: Text(
-                  products[index],
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                ),
+              //column widget to arrange product name and image vertically
+              child: Column(
+                children: [
+                  // Image widget to display the product image from the local folder
+                  Image.asset(
+                    imagePaths[index], // Get the image path based on the index
+                    fit: BoxFit.cover,
+                    height: 150.0,
+                    width: 100.0,
+                  ),
+                  // Padding around the product name text within the card
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    // Text widget displaying the product name
+                    child: Text(
+                      products[index],
+                      style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
               ),
+              
             ),
           );
         },
       ),
     );
+    
   }
 }
