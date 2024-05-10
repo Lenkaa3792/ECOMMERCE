@@ -76,6 +76,18 @@ class MyHomePage extends StatelessWidget {
         itemCount: categories.length,
         // Builder function that returns the widget for each item in the grid view
         itemBuilder: (BuildContext context, int index) {
+
+          //define a list of image file paths corresponding to dummy lists
+          List<String> categoryImages = [
+            'assets/images/electronics.jpg',
+            'assets/images/clothing.jpg',
+            'assets/images/shoes.jpg',
+            'assets/images/books.jpg',
+            'assets/images/home.jpg',
+            'assets/images/toys.jpg',
+          ];
+
+        
           // GestureDetector widget, detects gestures on its child and calls onTap callback when tapped
           return GestureDetector(
             // onTap callback function called when the category tile is tapped
@@ -93,14 +105,25 @@ class MyHomePage extends StatelessWidget {
             // Card widget, represents a material design card containing the category name
             child: Card(
               elevation: 3.0,
-              // Centering the category name text within the card
-              child: Center(
-                // Text widget displaying the category name
-                child: Text(
-                  categories[index],
-                  style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // display the category image
+                  Image.asset(
+                    categoryImages[index], // assuming the index matches the category index
+                    height: 200,
+                    width: 100, // adjust the height as needed
+                  ),
+                  SizedBox(height: 5), //spacing between the image and text
+                  //display the category name
+                  Text(
+                    categories[index],
+                    style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
+              // Centering the category name text within the card
+              
             ),
           );
         },
@@ -190,7 +213,7 @@ class CategoriesScreen extends StatelessWidget {
                     imagePaths[index], // Get the image path based on the index
                     fit: BoxFit.cover,
                     height: 150.0,
-                    width: 100.0,
+                    width: 250.0,
                   ),
                   // Padding around the product name text within the card
                   Padding(
