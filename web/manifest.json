@@ -1,6 +1,6 @@
 {
-    "name": "shopeasy",
-    "short_name": "shopeasy",
+    "name": "market",
+    "short_name": "market",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
