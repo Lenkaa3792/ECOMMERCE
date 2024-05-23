@@ -1,4 +1,4 @@
-# shopeasy
+# market
 
 A new Flutter project.
 
