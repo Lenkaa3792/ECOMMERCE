@@ -34,7 +34,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final TextEditingController _searchController = TextEditingController(); // Controller for search input
+  final TextEditingController _searchController =
+      TextEditingController(); // Controller for search input
 
   // List of categories with names and image URLs
   List<Map<String, String>> categories = [
@@ -46,12 +47,14 @@ class _MyHomePageState extends State<MyHomePage> {
     {'name': 'Toys', 'image': 'https://tinyurl.com/mbdc4nt9'},
   ];
 
-  List<Map<String, String>> displayedCategories = []; // List of categories to display
+  List<Map<String, String>> displayedCategories =
+      []; // List of categories to display
 
   @override
   void initState() {
     super.initState();
-    displayedCategories = List.from(categories); // Initialize displayed categories
+    displayedCategories =
+        List.from(categories); // Initialize displayed categories
   }
 
   @override
@@ -70,7 +73,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 border: InputBorder.none,
                 icon: Icon(Icons.search),
               ),
-              onChanged: _filterCategories, // Filter categories as the user types
+              onChanged:
+                  _filterCategories, // Filter categories as the user types
             ),
           ),
           IconButton(
@@ -117,7 +121,8 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => CategoriesScreen(category: displayedCategories[index]['name']!),
+                  builder: (context) => CategoriesScreen(
+                      category: displayedCategories[index]['name']!),
                 ),
               );
             },
@@ -133,10 +138,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0), // Padding around the text
+                    padding:
+                        const EdgeInsets.all(8.0), // Padding around the text
                     child: Text(
-                      displayedCategories[index]['name']!, // Display category name
-                      style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                      displayedCategories[index]
+                          ['name']!, // Display category name
+                      style: const TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
@@ -178,11 +186,36 @@ class CategoriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Dummy list of products with details
     List<Map<String, String>> products = [
-      {'name': 'Product 1', 'price': '\$100', 'stock': 'In Stock', 'description': 'Description 1'},
-      {'name': 'Product 2', 'price': '\$150', 'stock': 'In Stock', 'description': 'Description 2'},
-      {'name': 'Product 3', 'price': '\$200', 'stock': 'Out of Stock', 'description': 'Description 3'},
-      {'name': 'Product 4', 'price': '\$250', 'stock': 'In Stock', 'description': 'Description 4'},
-      {'name': 'Product 5', 'price': '\$300', 'stock': 'In Stock', 'description': 'Description 5'},
+      {
+        'name': 'Product 1',
+        'price': '\$100',
+        'stock': 'In Stock',
+        'description': 'Description 1'
+      },
+      {
+        'name': 'Product 2',
+        'price': '\$150',
+        'stock': 'In Stock',
+        'description': 'Description 2'
+      },
+      {
+        'name': 'Product 3',
+        'price': '\$200',
+        'stock': 'Out of Stock',
+        'description': 'Description 3'
+      },
+      {
+        'name': 'Product 4',
+        'price': '\$250',
+        'stock': 'In Stock',
+        'description': 'Description 4'
+      },
+      {
+        'name': 'Product 5',
+        'price': '\$300',
+        'stock': 'In Stock',
+        'description': 'Description 5'
+      },
     ];
 
     return Scaffold(
@@ -212,11 +245,13 @@ class CategoriesScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0), // Padding around the text
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center, // Center the content
+                  mainAxisAlignment:
+                      MainAxisAlignment.center, // Center the content
                   children: [
                     Text(
                       products[index]['name']!, // Display product name
-                      style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 10),
                     Text(
@@ -226,7 +261,8 @@ class CategoriesScreen extends StatelessWidget {
                     const SizedBox(height: 10),
                     Text(
                       products[index]['stock']!, // Display product stock status
-                      style: const TextStyle(fontSize: 14.0, color: Colors.grey),
+                      style:
+                          const TextStyle(fontSize: 14.0, color: Colors.grey),
                     ),
                   ],
                 ),
@@ -246,7 +282,8 @@ class CategoriesScreen extends StatelessWidget {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Item Added to Cart'), // Alert dialog title
-          content: Text('${product['name']} has been added to your cart.'), // Alert dialog content
+          content: Text(
+              '${product['name']} has been added to your cart.'), // Alert dialog content
           actions: [
             TextButton(
               onPressed: () {
@@ -273,7 +310,8 @@ class ProfileScreen extends StatelessWidget {
         centerTitle: true, // Center the title
       ),
       body: const Center(
-        child: Text('User Profile Screen'), // Text content of the profile screen
+        child:
+            Text('User Profile Screen'), // Text content of the profile screen
       ),
     );
   }
@@ -291,7 +329,8 @@ class CartScreen extends StatelessWidget {
         centerTitle: true, // Center the title
       ),
       body: const Center(
-        child: Text('Shopping Cart Screen'), // Text content of the shopping cart screen
+        child: Text(
+            'Shopping Cart Screen'), // Text content of the shopping cart screen
       ),
     );
   }
